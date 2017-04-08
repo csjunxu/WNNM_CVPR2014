@@ -8,10 +8,10 @@ fpath = fullfile(Original_image_dir, '*.png');
 im_dir  = dir(fpath);
 im_num = length(im_dir);
 
-for nSig = [40];
+for nSig = [40 50 15 25 75 100];
     PSNR = [];
     SSIM = [];
-    for i = 14 %1:im_num
+    for i = 1:im_num
         S = regexp(im_dir(i).name, '\.', 'split');
         O_Img = double(imread(fullfile(Original_image_dir, im_dir(i).name)));
         randn('seed',0);
