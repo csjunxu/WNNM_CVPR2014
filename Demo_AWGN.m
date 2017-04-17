@@ -1,5 +1,5 @@
 clear;
-Original_image_dir  =    'C:\Users\csjunxu\Desktop\PGPD_TIP\20images\';
+Original_image_dir  =    'C:\Users\csjunxu\Desktop\Projects\WODL\20images\';
 % Original_image_dir  =    'C:\Users\csjunxu\Desktop\Projects\WODL\20newimages\';
 % Original_image_dir  =    'C:\Users\csjunxu\Desktop\JunXu\Datasets\kodak24\kodak_color\';
 
