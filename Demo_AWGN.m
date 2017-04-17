@@ -1,6 +1,6 @@
 clear;
-% Original_image_dir  =    'C:\Users\csjunxu\Desktop\PGPD_TIP\20images\';
-Original_image_dir  =    'C:\Users\csjunxu\Desktop\Projects\WODL\20newimages\';
+Original_image_dir  =    'C:\Users\csjunxu\Desktop\PGPD_TIP\20images\';
+% Original_image_dir  =    'C:\Users\csjunxu\Desktop\Projects\WODL\20newimages\';
 % Original_image_dir  =    'C:\Users\csjunxu\Desktop\JunXu\Datasets\kodak24\kodak_color\';
 
 Sdir = regexp(Original_image_dir, '\', 'split');
@@ -8,7 +8,7 @@ fpath = fullfile(Original_image_dir, '*.png');
 im_dir  = dir(fpath);
 im_num = length(im_dir);
 
-for nSig = [40 50 15 25 75 100];
+for nSig = [25 40 50 15 75 100];
     PSNR = [];
     SSIM = [];
     for i = 1:im_num
