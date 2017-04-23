@@ -8,7 +8,7 @@ fpath = fullfile(Original_image_dir, '*.png');
 im_dir  = dir(fpath);
 im_num = length(im_dir);
 
-for nSig = [25 40 50 15 75 100];
+for nSig = [20 60 80 100];
     PSNR = [];
     SSIM = [];
     for i = 1:im_num
