@@ -1,11 +1,9 @@
 function [E_Img]   =  WNNM_DeNoising( N_Img, O_Img, Par )
 
-
 E_Img           = N_Img;                                                        % Estimated Image
 [Height Width]  = size(E_Img);   
 TotalPatNum     = (Height-Par.patsize+1)*(Width-Par.patsize+1);                 %Total Patch Number in the image
 Dim             = Par.patsize*Par.patsize;  
-
  
 [Neighbor_arr Num_arr Self_arr] =	NeighborIndex(N_Img, Par);                  % PreCompute the all the patch index in the searching window 
             NL_mat              =   zeros(Par.patnum,length(Num_arr));          % NL Patch index matrix
