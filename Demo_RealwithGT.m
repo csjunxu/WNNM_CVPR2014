@@ -28,21 +28,21 @@ if ~isdir(write_sRGB_dir)
 end
 RunTime = [];
 for i = 1:im_num
-    IMin = im2double(imread(fullfile(TT_Original_image_dir,TT_im_dir(i).name) ));
-    IM_GT = im2double(imread(fullfile(GT_Original_image_dir, GT_im_dir(i).name)));
+    IMin = double(imread(fullfile(TT_Original_image_dir,TT_im_dir(i).name) ));
+    IM_GT = double(imread(fullfile(GT_Original_image_dir, GT_im_dir(i).name)));
     IMname = TT_im_dir(i).name(1:end-9);
     [h,w,ch] = size(IMin);
     fprintf('%s: \n',TT_im_dir(i).name);
     IMout = zeros(size(IMin));
     for cc = 1:ch
         %% denoising
-        nSig = NoiseLevel( IMin(:,:,cc)*255);
+        nSig = NoiseEstimation(IM(:, :, cc), 8); 
         Par   = ParSet(nSig);
-        IMoutcc = WNNM_DeNoising( IMin(:,:,cc) *255, IM_GT(:,:,cc)*255, Par );
+        IMoutcc = WNNM_DeNoising( IMin(:,:,cc), IM_GT(:,:,cc), Par );
         IMout(:,:,cc) = IMoutcc;
     end
-    PSNR = [PSNR csnr( IMout, IM_GT*255, 0, 0 )];
-    SSIM = [SSIM cal_ssim( IMout, IM_GT*255, 0, 0 )];
+    PSNR = [PSNR csnr( IMout, IM_GT, 0, 0 )];
+    SSIM = [SSIM cal_ssim( IMout, IM_GT, 0, 0 )];
     fprintf('The final PSNR = %2.4f, SSIM = %2.4f. \n', PSNR(end), SSIM(end));
     imwrite(IMout/255, [write_sRGB_dir '/' method '_our_' IMname '.png']);
 end
