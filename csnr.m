@@ -1,6 +1,9 @@
 function s=csnr(A,B,row,col)
 
-[n,m,ch]=size(A);
+[~,~,~]=size(A);
+[n,m,ch]=size(B);
+A=double(A);
+B=double(B);
 
 if ch==1
    e=A-B;
