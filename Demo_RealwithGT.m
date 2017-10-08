@@ -31,7 +31,7 @@ end
 RunTime = [];
 for i = 1:im_num
     fprintf('%s: \n',TT_im_dir(i).name);
-    fprintf('%s: \n',out_im_dir(i).name);
+%     fprintf('%s: \n',out_im_dir(i).name);
     IM = double(imread(fullfile(TT_Original_image_dir,TT_im_dir(i).name) ));
     IM_GT = double(imread(fullfile(GT_Original_image_dir, GT_im_dir(i).name)));
     fprintf('The initial PSNR = %2.4f, SSIM = %2.4f. \n', csnr(uint8(IM), uint8(IM_GT), 0, 0 ), cal_ssim(uint8(IM), uint8(IM_GT), 0, 0 ));
