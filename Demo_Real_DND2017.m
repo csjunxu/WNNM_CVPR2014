@@ -1,6 +1,6 @@
 clear;
 Original_image_dir = 'C:\Users\csjunxu\Desktop\CVPR2018 Denoising\dnd_2017\images_srgb\';
-fpath = fullfile(Original_image_dir, '*.mat');
+fpath = fullfile(Original_image_dir, '*.mat'); 
 im_dir  = dir(fpath);
 im_num = length(im_dir);
 load 'C:\Users\csjunxu\Desktop\CVPR2018 Denoising\dnd_2017\info.mat';
@@ -14,7 +14,7 @@ if ~isdir(write_sRGB_dir)
     mkdir(write_sRGB_dir)
 end
 
-for i = 1:im_num
+for i = im_num:-1:1
     Par.image = i;
     load(fullfile(Original_image_dir, im_dir(i).name));
     S = regexp(im_dir(i).name, '\.', 'split');
@@ -33,6 +33,6 @@ for i = 1:im_num
             IMoutcc = WNNM_DeNoising( IMin(:,:,c) *255, IM_GT(:,:,c)*255, Par );
             IMout(:,:,c) = IMoutcc;
         end
-        imwrite(IMout/255, [write_sRGB_dir method '_DND_' IMname '.png']);
+        imwrite(IMout/255, [write_sRGB_dir '/' method '_DND_' IMname '.png']);
     end
 end
