@@ -14,7 +14,7 @@ if ~isdir(write_sRGB_dir)
     mkdir(write_sRGB_dir)
 end
 
-for i = im_num:-1:1
+for i = 49:-1:28
     Par.image = i;
     load(fullfile(Original_image_dir, im_dir(i).name));
     S = regexp(im_dir(i).name, '\.', 'split');
